@@ -28,10 +28,10 @@ function showPage(path) {
 // Update the browser history, then show page
 function route(path) {
 	// If the new page is equal to the current page, don't do anything
-	if (location.pathname.substring(21) === path) {
+	if (location.pathname.substring(1+ghPath.length) === path) {
 		return;
 	}
-	history.pushState({}, '', new URL(ghPath +'/'+ path, location.origin));
+	history.pushState({}, '', new URL(ghPath,path, location.origin));
 
 	showPage(path);
 }
@@ -47,7 +47,7 @@ for (const router of routers) {
 		route(e.target.dataset.route);
 	});
 }
-window.addEventListener('popstate', _ => showPage(location.pathname.substring(21)));
+window.addEventListener('popstate', _ => showPage(location.pathname.substring(1+ghPath.length)));
 
 // Show the current URL (to support direct linking aka deep links)
-showPage(location.pathname.substring(21));
+showPage(location.pathname.substring(1+ghPath.length));
