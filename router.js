@@ -31,7 +31,7 @@ function route(path) {
 	if (location.pathname.substring(21) === path) {
 		return;
 	}
-	history.pushState({}, '', new URL(ghPath + path, location.origin));
+	history.pushState({}, '', new URL(ghPath +'/'+ path, location.origin));
 
 	showPage(path);
 }
