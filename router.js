@@ -1,7 +1,7 @@
 const routers = document.querySelectorAll('[data-router]');
 const content = document.querySelector('section');
 const pages = Array.from(document.querySelectorAll('[data-page]')); // Must convert to array to preserve elements
-const origin = 'https://n-ce.github.io/Client-Side-Routing';
+const ghPath = '/Client-Side-Routing';
 // Display the appropriate page based on the URL path (does NOT modify browser history)
 function showPage(path) {
 	if (path === '' || path === 'index.html') {
@@ -21,7 +21,7 @@ function showPage(path) {
 	if (!match) {
 		// MUST redirect to a page where the web server serves an actual 404 error (i.e. not just 
 		// index.html again) otherwise this triggers an infinite loop
-		location.href = origin + '/errors/404.html';
+		location.href = location.origin + ghPath + '/errors/404.html';
 	}
 }
 
@@ -31,7 +31,7 @@ function route(path) {
 	if (location.pathname.substring(20) === path) {
 		return;
 	}
-	window.history.pushState({}, '', new URL(path, origin));
+	history.pushState({}, '', new URL(ghPath + path, location.origin));
 
 	showPage(path);
 }
