@@ -21,7 +21,7 @@ function showPage(path) {
 	if (!match) {
 		// MUST redirect to a page where the web server serves an actual 404 error (i.e. not just 
 		// index.html again) otherwise this triggers an infinite loop
-		location.href = location.origin+'/errors/NotFound';
+		location.href = location.origin + '/errors/NotFound';
 	}
 }
 
