@@ -1,7 +1,7 @@
 const routers = document.querySelectorAll('[data-router]');
 const content = document.querySelector('section');
 const pages = Array.from(document.querySelectorAll('[data-page]')); // Must convert to array to preserve elements
-location.origin += 'client-side-routing';
+const origin = location.origin + '/Client-Side-Routing';
 // Display the appropriate page based on the URL path (does NOT modify browser history)
 function showPage(path) {
 	if (path === '' || path === 'index.html') {
@@ -21,7 +21,7 @@ function showPage(path) {
 	if (!match) {
 		// MUST redirect to a page where the web server serves an actual 404 error (i.e. not just 
 		// index.html again) otherwise this triggers an infinite loop
-		location.href = location.origin + '/errors/NotFound';
+		location.href = origin + '/errors/NotFound';
 	}
 }
 
@@ -31,7 +31,7 @@ function route(path) {
 	if (location.pathname.substring(1) === path) {
 		return;
 	}
-	window.history.pushState({}, '', new URL(path, location.origin));
+	window.history.pushState({}, '', new URL(path, origin));
 
 	showPage(path);
 }
@@ -47,7 +47,7 @@ for (const router of routers) {
 		route(e.target.dataset.route);
 	});
 }
-window.addEventListener('popstate', _ => showPage(window.location.pathname.substring(1)));
+window.addEventListener('popstate', _ => showPage(location.pathname.substring(1)));
 
 // Show the current URL (to support direct linking aka deep links)
 showPage(location.pathname.substring(1));
