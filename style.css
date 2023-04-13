@@ -1,0 +1,90 @@
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+      background: hsl(275deg 10% 90%);
+      color: hsl(275deg 90% 10%);
+      inline-size: min(100% - 16px, 1080px);
+      margin-inline: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      border-block-end: 2px solid hsl(275deg 90% 10%);
+      margin-block-end: 8px;
+    }
+
+    main {
+      display: grid;
+      grid-template:
+        "nav content"
+        / 1fr 4fr;
+    }
+
+    nav {
+      grid-area: nav;
+      display: flex;
+      flex-direction: column;
+    }
+
+    section {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav>a {
+      padding-block: 16px;
+      margin-inline-end: 8px;
+      text-align: center;
+    }
+
+    a {
+      color: hsl(275deg 50% 50%);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      transition: background-color 300ms;
+    }
+
+    a:hover,
+    a:focus {
+      background: hsl(275deg 20% 85%);
+      transition: background-color 150ms;
+    }
+
+    code {
+      background: hsl(275deg 25% 85%);
+      border-radius: 3px;
+      font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+      padding: 0 3px;
+    }
+
+    kbd {
+      background: hsl(275deg 25% 85%);
+      border-radius: 4px;
+      border: 1px solid hsl(275deg 20% 85%);
+      box-shadow: 0 1px 1px hsl(275deg 10% 10% / 40%), 0 2px 0 0 hsl(275deg 100% 97% / 70%) inset;
+      padding: 2px 4px;
+    }
+
+    p.subtitle {
+      font-weight: 700;
+    }
+    
+    @media (max-width: 800px) {
+      main {
+        grid-template: 
+          "nav"
+          "content";
+      }
+
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      nav>a {
+        padding: 16px;
+        margin-inline-end: 0;
+      }
+    }
