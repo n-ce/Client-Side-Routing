@@ -1,7 +1,7 @@
 const routers = document.querySelectorAll('[data-router]');
 const content = document.querySelector('section');
 const pages = Array.from(document.querySelectorAll('[data-page]')); // Must convert to array to preserve elements
-const origin = location.origin + '/Client-Side-Routing';
+const origin = 'https://n-ce.github.io/Client-Side-Routing';
 // Display the appropriate page based on the URL path (does NOT modify browser history)
 function showPage(path) {
 	if (path === '' || path === 'index.html') {
