@@ -28,7 +28,7 @@ function showPage(path) {
 // Update the browser history, then show page
 function route(path) {
 	// If the new page is equal to the current page, don't do anything
-	if (location.pathname.substring(19) === path) {
+	if (location.pathname.substring(20) === path) {
 		return;
 	}
 	window.history.pushState({}, '', new URL(path, origin));
@@ -47,7 +47,7 @@ for (const router of routers) {
 		route(e.target.dataset.route);
 	});
 }
-window.addEventListener('popstate', _ => showPage(location.pathname.substring(1)));
+window.addEventListener('popstate', _ => showPage(location.pathname.substring(20)));
 
 // Show the current URL (to support direct linking aka deep links)
-showPage(location.pathname.substring(19));
+showPage(location.pathname.substring(20));
